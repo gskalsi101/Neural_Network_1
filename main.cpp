@@ -9,7 +9,7 @@ topology.push_back(3);
 
 vector<double> input;
 input.push_back(1.0);
-input.push_back(0.0);
+input.push_back(0.5);
 input.push_back(1.0);
 
 Neural_network nn (topology);
