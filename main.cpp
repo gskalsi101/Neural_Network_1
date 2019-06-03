@@ -2,7 +2,7 @@
 int main(){
 
 srand((unsigned int)time(NULL));
-
+/*
 vector<int> topology;
 topology.push_back(3);
 topology.push_back(2);
@@ -33,14 +33,29 @@ Matrix * m1_t = m1->transpose();
 cout << "\nMatrix m1_t:\n";
 m1_t->print_to_console();
 
-Matrix * try1 = m->multiply(m);
-cout << "\nMatrix try1: \n";
-try1->print_to_console();
+Matrix * multiplicated = m->multiply(m1);
+cout << "\nMatrix multiplicated: \n";
+multiplicated->print_to_console();
 
 delete m;
 delete m1;
-delete try1;
+delete multiplicated;
+*/
 
+vector<double> input;
+input.push_back(1);
+input.push_back(0);
+input.push_back(1);
+
+vector<int>topology;
+for(int i = 3; i > 0; i--){
+	topology.push_back(i);
+}
+
+Neural_network n2(topology);
+n2.set_current_input(input);
+n2.feed_forward();
+n2.print_to_console();
 return 0;
 
 }

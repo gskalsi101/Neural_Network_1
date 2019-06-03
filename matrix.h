@@ -101,10 +101,8 @@ public:
 	Matrix* multiply(Matrix* m_r) {
 		try {
 			if (num_cols != m_r->get_num_rows()) {
-				cout << "ERROR" << endl;
-				throw ("Wrong Dimentions.  Format: A.multiply(&B) is A * B"s); 
+				throw ("ERROR\n Wrong Dimentions.  Format: A.multiply(&B) is A * B"s); 
 			}
-			cout << "Fuck" << endl;
 			Matrix* c = new Matrix(num_rows, m_r->get_num_cols(), 0);
 
 			for (int r1 = 0; r1 < c->get_num_rows(); r1++) {//Row New Matrix
@@ -120,7 +118,6 @@ public:
 		}
 
 		catch (string x) {
-			cout << "Catch Block" << endl;
 			cout << x << endl;
 			return new Matrix(0, 0, 0);
 		}
