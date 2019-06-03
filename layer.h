@@ -15,21 +15,21 @@ public:
 	void set_val(int index, double val) {
 		neurons[index]->set_val(val);
 	}
-	Matrix* maxtixify_current_vals() {
+	Matrix* matrixify_current_vals() {
 		Matrix* m = new Matrix(1, int(neurons.size()), 0);
 		for (int c = 0; c < int(neurons.size()); c++) {
 			m->set_val(0, c, neurons[c]->get_current_val());
 		}
 		return m;
 	}
-	Matrix* maxtixify_activated_vals() {
+	Matrix* matrixify_activated_vals() {
 		Matrix* m = new Matrix(1, int(neurons.size()), 0);
 		for (int c = 0; c < int(neurons.size()); c++) {
 			m->set_val(0, c, neurons[c]->get_activated_val());
 		}
 		return m;
 	}
-	Matrix* maxtixify_derived_vals() {
+	Matrix* matrixify_derived_vals() {
 		Matrix* m = new Matrix(1, int(neurons.size()), 0);
 		for (int c = 0; c < int(neurons.size()); c++) {
 			m->set_val(0, c, neurons[c]->get_derived_val());

@@ -23,11 +23,17 @@ public:
 
 	void feed_forward() {
 		for (int i = 0; i < int(layers.size() - 1); i++) {
+			cout << "\n\nLayer: " << i << endl;
 			Matrix* vals = nullptr;
-			(i == 0) ? vals = layers[i]->maxtixify_current_vals() : vals = layers[i]->maxtixify_activated_vals();
+			(i == 0) ? vals = layers[i]->matrixify_current_vals() : vals = layers[i]->matrixify_activated_vals();
+			cout << "Vals\n";
+			vals->print_to_console();
 			Matrix* weight_matrix = weight_matrices[i];
+			cout << "\nWeight Matrix\n";
+			weight_matrix->print_to_console();
 			Matrix* c = vals->multiply(weight_matrix);
-
+			cout << "\nMultiplicated Matrix\n";
+			c->print_to_console();	
 			for (int c_index = 0; c_index < c->get_num_cols(); c_index++) {//Set current values for next layer
 				layers[i + 1]->set_val(c_index, c->get_val(0, c_index));
 			}
@@ -36,17 +42,23 @@ public:
 
 	void print_to_console() {
 		for (int i = 0; i < int(layers.size()); i++) {
-			cout << "Layer " << i << endl;
+			cout << "Layer: " << i << endl;
 			if (i == 0) {
-				Matrix* m = layers[i]->maxtixify_current_vals();
+				Matrix* m = layers[i]->matrixify_current_vals();
 				m->print_to_console();
 			}
 			else {
-				Matrix* m = layers[i]->maxtixify_activated_vals();
+				Matrix* m = layers[i]->matrixify_activated_vals();
 				m->print_to_console();
 			}
-		}
+			cout << "==================\n";
+			if (i < int(layers.size() - 1)) {
+				cout << "Weight of layer: " << i << endl;
+				weight_matrices[i]->print_to_console();
+				cout << "==================\n";
+			}
 
+		}
 	}
 
 private:
