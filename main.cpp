@@ -2,7 +2,7 @@
 int main(){
 
 srand((unsigned int)time(NULL));
-
+/*
 vector<int> topology;
 topology.push_back(3);
 topology.push_back(2);
@@ -55,6 +55,25 @@ Neural_network n2(topology1);
 n2.set_current_input(input1);
 n2.feed_forward();
 n2.print_to_console();
+*/
+
+vector<double> input3 {1, 0, 1};
+
+vector<int> topology3 {3, 2, 3};
+
+Neural_network * nn3 = new Neural_network(topology3);
+nn3->set_current_input(input3);
+nn3->set_current_target(input3);
+nn3->feed_forward();
+nn3->set_errors();
+
+nn3->print_to_console();
+
+cout << "Total Error: " << nn3->get_total_error();
+
+
+delete nn3;
+
 return 0;
 
 }

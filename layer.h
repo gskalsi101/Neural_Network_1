@@ -36,6 +36,10 @@ public:
 		}
 		return m;
 	}
+	int get_size() { return size; }
+	double get_activated_val(int index) {
+		return neurons[index]->get_activated_val();
+	}
 
 private:
 	int size;
