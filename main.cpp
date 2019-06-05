@@ -1,4 +1,5 @@
 #include "neural_network.h"
+using namespace std;
 int main(){
 
 srand((unsigned int)time(NULL));
@@ -64,14 +65,15 @@ vector<int> topology3 {3, 2, 3};
 Neural_network * nn3 = new Neural_network(topology3);
 nn3->set_current_input(input3);
 nn3->set_current_target(input3);
-nn3->feed_forward();
-nn3->set_errors();
 
-nn3->print_to_console();
-
-cout << "Total Error: " << nn3->get_total_error();
-
-
+for (int i = 0; i < 10000; i++) {
+	cout << "Epoch " << i << endl;
+	nn3->feed_forward();
+	cout << "A";
+	nn3->set_errors();
+	cout << "Total Error: " << nn3->get_total_error() << endl;
+	nn3->back_prop();
+}
 delete nn3;
 
 return 0;
