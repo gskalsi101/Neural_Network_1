@@ -66,10 +66,9 @@ Neural_network * nn3 = new Neural_network(topology3);
 nn3->set_current_input(input3);
 nn3->set_current_target(input3);
 
-for (int i = 0; i < 10000; i++) {
+for (int i = 0; i < 2; i++) {
 	cout << "Epoch " << i << endl;
 	nn3->feed_forward();
-	cout << "A";
 	nn3->set_errors();
 	cout << "Total Error: " << nn3->get_total_error() << endl;
 	nn3->back_prop();

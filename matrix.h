@@ -114,11 +114,13 @@ public:
 					c->set_val(r1, c1, sum);
 				}//!Column New Matrix
 			}//!Row New Matrix
+			cout << "Matrix A: " << get_num_rows() << 'x' << get_num_cols() << ",  Matrix B: " << get_num_rows() << 'x' << get_num_cols() << endl;
 			return c;
 		}
 
 		catch (string x) {
 			cout << x << endl;
+			cout << "ERROR:       Matrix A: " << get_num_rows() << 'x' << get_num_cols() << ",  Matrix B: " << get_num_rows() << 'x' << get_num_cols() << endl;
 			return new Matrix(0, 0, 0);
 		}
 	

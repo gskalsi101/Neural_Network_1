@@ -24,6 +24,8 @@ public:
 	}
 
 	void feed_forward() {
+
+		cout << "\nStart Feed forward\n";
 		for (int i = 0; i < int(layers.size() - 1); i++) {
 			//cout << "\n\nLayer: " << i << endl;
 			Matrix* vals = nullptr;
@@ -31,18 +33,23 @@ public:
 			//cout << "Vals\n";
 			//vals->print_to_console();
 			Matrix* weight_matrix = weight_matrices[i];
+			cout << "\nWeight Matrix        Layer " << i << "\n";
+			weight_matrix->print_to_console();
+			cout << "\nWeight Matrix\n";
 			//cout << "\nWeight Matrix\n";
 			//weight_matrix->print_to_console();
 			//cout << "Vals dimentions: " << vals->get_num_rows() << 'x' << vals->get_num_cols() << endl;
 			//cout << "weight_matrix dimentions: " << weight_matrix->get_num_rows() << 'x' << weight_matrix->get_num_cols() << endl;
-
+			cout << "\nAbout to multiply i = " << i << "\n";
 			Matrix* c = vals->multiply(weight_matrix);
+			cout << "\nDone multiplying\n";
 			//cout << "\nMultiplicated Matrix\n";
 			//c->print_to_console();	
 			for (int c_index = 0; c_index < c->get_num_cols(); c_index++) {//Set current values for next layer
 				layers[i + 1]->set_val(c_index, c->get_val(0, c_index));
 			}
 		}
+		cout << "\nEnd Feed forward\n";
 	}
 
 	void print_to_console() {
@@ -84,7 +91,7 @@ public:
 			//Get 
 				double temp = layers[layers.size() - 1]->get_activated_val(i) - target[i];
 				errors[i] = temp;
-				total_error += abs(temp);
+				total_error += temp;
 			}
 			historical_errors.push_back(total_error);
 		}
@@ -98,6 +105,7 @@ public:
 	}
 
 	void back_prop() {
+		cout << "\nStart Backprop\n";
 		vector <Matrix*> new_weights;
 		Matrix *gradient;
 		/*				First back_prop, from output to first hidden layer
@@ -203,6 +211,8 @@ public:
 		cout << "Old Weight size: " << weight_matrices.size() << endl;
 		reverse(new_weights.begin(), new_weights.end());
 		weight_matrices = new_weights;
+
+
 	}
 
 private:
